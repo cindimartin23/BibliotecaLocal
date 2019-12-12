@@ -13,10 +13,14 @@ def index(request):
     # Libros disponibles (status = 'a')
     num_instances_available=BookInstance.objects.filter(status__exact='a').count()
     num_authors=Author.objects.count()  # El 'all()' esta implícito por defecto.
+    num_genres = Genre.objects.all().count() # Cuenta Generos
+    num_potter = Book.objects.filter(title__contains='potter').count() # Cuenta titulos que contengan la palabra potter
     
     # Renderiza la plantilla HTML index.html con los datos en la variable contexto
     return render(
         request,
         'index.html',
-        context={'num_books':num_books,'num_instances':num_instances,'num_instances_available':num_instances_available,'num_authors':num_authors},
+        context={'num_books':num_books,'num_instances':num_instances,'num_instances_available':num_instances_available,'num_authors':num_authors,
+        'num_genres':num_genres,
+        'num_potter':num_potter},
     )

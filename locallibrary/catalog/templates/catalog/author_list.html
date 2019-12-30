@@ -5,10 +5,12 @@
 <ul>
   {% for author in author_list %}
   <li>
-    <a href="{{ author.get_absolute_url }}"
-      >{{ author.last_name }}, {{ author.first_name }}</a
-    >
-    ({{author.date_of_birth}})
+    <a href="{{ author.get_absolute_url }}">{{ author.last_name }}, {{ author.first_name }}</a>
+    ({{author.date_of_birth}}) -
+    {% if user.is_staff and perms.catalog.can_mark_returned %}
+    <a href="{% url 'author_update' author.pk %}">Update</a> -
+    <a href="{% url 'author_delete' author.pk %}">Delete</a>
+    {% endif %}
   </li>
   {% endfor %}
 </ul>

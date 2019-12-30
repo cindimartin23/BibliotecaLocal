@@ -115,6 +115,12 @@ class Author(models.Model):
         Retorna la url para acceder a una instancia particular de un autor.
         """
         return reverse('author-detail', args=[str(self.id)])
+
+    def author_update_url(self):
+        """
+        Retorna la url para acceder a una instancia de edicion de un autor.
+        """
+        return reverse('author_update', args=[str(self.id)])
     
     def __str__(self):
         """

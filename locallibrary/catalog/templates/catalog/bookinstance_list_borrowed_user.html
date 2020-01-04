@@ -4,7 +4,7 @@
 <h1>Borrowed books</h1>
 
 {% if bookinstance_list %}
-<ul>
+<ul style="list-style: none">
 
     {% for bookinst in bookinstance_list %}
     <li class="{% if bookinst.is_overdue %}text-danger{% endif %}">

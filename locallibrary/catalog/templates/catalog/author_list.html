@@ -2,7 +2,7 @@
 <h1>Author List</h1>
 
 {% if author_list %}
-<ul>
+<ul style="list-style: none">
   {% for author in author_list %}
   <li>
     <a href="{{ author.get_absolute_url }}">{{ author.last_name }}, {{ author.first_name }}</a>
